@@ -93,6 +93,7 @@
     <Compile Include="Entity\Invoice.cs" />
     <Compile Include="Entity\Product.cs" />
     <Compile Include="Entity\User.cs" />
+    <Compile Include="Util\CryptographyUtil.cs" />
     <Compile Include="Util\DatabaseUtil.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

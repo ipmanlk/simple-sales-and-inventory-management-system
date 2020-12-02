@@ -6,7 +6,7 @@ namespace sales_and_inventory.Controller
 {
     class UserController
     {
-        public static Boolean save(User user)
+        public static Boolean Save(User user)
         {
             MySqlConnection connection = Util.DatabaseUtil.GetConnection();
             MySqlCommand cmd = connection.CreateCommand();
@@ -23,7 +23,7 @@ namespace sales_and_inventory.Controller
             return true;
         }
 
-        public static User getOne(int id)
+        public static User GetOne(int id)
         {
             MySqlConnection connection = Util.DatabaseUtil.GetConnection();
             MySqlCommand cmd = connection.CreateCommand();

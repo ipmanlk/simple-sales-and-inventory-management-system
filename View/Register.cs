@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using sales_and_inventory.Entity;
 using sales_and_inventory.Controller;
@@ -52,13 +46,28 @@ namespace sales_and_inventory.View
             user.photo = img;
             user.registeredDate = "2015-01-01";
 
-            UserController.save(user);
+            UserController.Save(user);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            User user = UserController.getOne(1);
-            imgUser.Image = Image.FromStream(new MemoryStream(user.photo));
+            MemoryStream ms = new MemoryStream();
+            imgUser.Image.Save(ms, imgUser.Image.RawFormat);
+            byte[] img = ms.ToArray();
+
+            byte[] encryptedImg = Util.CryptographyUtil.EncryptByteArray("b14ca5898a4e4133bbce2ea2315a1916", img);
+            byte[] decryptedImg = Util.CryptographyUtil.DecryptByteArray("b14ca5898a4e4133bbce2ea2315a1916", encryptedImg);
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
