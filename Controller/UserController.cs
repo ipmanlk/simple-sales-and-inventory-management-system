@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Diagnostics;
 using MySql.Data.MySqlClient;
 using sales_and_inventory.Entity;
+using sales_and_inventory.Util;
 
 namespace sales_and_inventory.Controller
 {
@@ -8,19 +10,30 @@ namespace sales_and_inventory.Controller
     {
         public static Boolean Save(User user)
         {
-            MySqlConnection connection = Util.DatabaseUtil.GetConnection();
-            MySqlCommand cmd = connection.CreateCommand();
-            cmd.CommandText = "INSERT INTO user(username, password, name, nic, mobile, email, photo, registered_date) VALUES(@username, @password, @name, @nic, @mobile, @email, @photo, @registration_date)";
-            cmd.Parameters.AddWithValue("@username", user.username);
-            cmd.Parameters.AddWithValue("@password", user.password);
-            cmd.Parameters.AddWithValue("@name", user.name);
-            cmd.Parameters.AddWithValue("@nic", user.nic);
-            cmd.Parameters.AddWithValue("@mobile", user.mobile);
-            cmd.Parameters.AddWithValue("@email", user.email);
-            cmd.Parameters.AddWithValue("@photo", user.photo);
-            cmd.Parameters.AddWithValue("@registration_date", user.registeredDate);
-            cmd.ExecuteNonQuery();
-            return true;
+            try
+            {
+                MySqlConnection connection = Util.DatabaseUtil.GetConnection();
+                MySqlCommand cmd = connection.CreateCommand();
+                cmd.CommandText = "INSERT INTO user(username, password, name, nic, mobile, email, photo, registered_date) VALUES(@username, @password, @name, @nic, @mobile, @email, @photo, @registration_date)";
+
+                string passwordHash = CryptographyUtil.GetHash(user.password);
+                byte[] encryptedPhoto = CryptographyUtil.EncryptByteArray(passwordHash.Substring(0, 32), user.photo);
+
+                cmd.Parameters.AddWithValue("@username", user.username);
+                cmd.Parameters.AddWithValue("@password", passwordHash);
+                cmd.Parameters.AddWithValue("@name", user.name);
+                cmd.Parameters.AddWithValue("@nic", user.nic);
+                cmd.Parameters.AddWithValue("@mobile", user.mobile);
+                cmd.Parameters.AddWithValue("@email", user.email);
+                cmd.Parameters.AddWithValue("@photo", encryptedPhoto);
+                cmd.Parameters.AddWithValue("@registration_date", user.registeredDate);
+                cmd.ExecuteNonQuery();
+                return true;
+            } catch (Exception e)
+            {
+                Debug.WriteLine(e.Message);
+                return false;
+            }
         }
 
         public static User GetOne(int id)
