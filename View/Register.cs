@@ -42,12 +42,12 @@ namespace sales_and_inventory.View
 
             User user = getInputs();
 
-            if (UserController.Save(user))
+            if (AuthController.Register(user))
             {
-                MessageBox.Show("Success", "Registration completed!.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Registration completed!.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             } else
             {
-                MessageBox.Show("Error", "Registration failed!.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Registration failed!.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

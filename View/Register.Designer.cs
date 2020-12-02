@@ -84,7 +84,7 @@
             this.txtPasswordConfirm.Name = "txtPasswordConfirm";
             this.txtPasswordConfirm.PasswordChar = '*';
             this.txtPasswordConfirm.Size = new System.Drawing.Size(228, 20);
-            this.txtPasswordConfirm.TabIndex = 17;
+            this.txtPasswordConfirm.TabIndex = 7;
             // 
             // imgUser
             // 
@@ -102,7 +102,7 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(228, 20);
-            this.txtPassword.TabIndex = 16;
+            this.txtPassword.TabIndex = 6;
             // 
             // label8
             // 
@@ -118,14 +118,14 @@
             this.txtNIC.Location = new System.Drawing.Point(20, 148);
             this.txtNIC.Name = "txtNIC";
             this.txtNIC.Size = new System.Drawing.Size(228, 20);
-            this.txtNIC.TabIndex = 14;
+            this.txtNIC.TabIndex = 3;
             // 
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(20, 242);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(228, 20);
-            this.txtEmail.TabIndex = 13;
+            this.txtEmail.TabIndex = 5;
             // 
             // label7
             // 
@@ -178,7 +178,7 @@
             this.txtMobile.Location = new System.Drawing.Point(20, 195);
             this.txtMobile.Name = "txtMobile";
             this.txtMobile.Size = new System.Drawing.Size(228, 20);
-            this.txtMobile.TabIndex = 7;
+            this.txtMobile.TabIndex = 4;
             // 
             // label2
             // 
@@ -194,7 +194,7 @@
             this.txtName.Location = new System.Drawing.Point(20, 101);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(228, 20);
-            this.txtName.TabIndex = 5;
+            this.txtName.TabIndex = 2;
             // 
             // label1
             // 
@@ -210,14 +210,14 @@
             this.txtUsername.Location = new System.Drawing.Point(20, 54);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(228, 20);
-            this.txtUsername.TabIndex = 3;
+            this.txtUsername.TabIndex = 1;
             // 
             // btnRegister
             // 
             this.btnRegister.Location = new System.Drawing.Point(376, 334);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(75, 23);
-            this.btnRegister.TabIndex = 2;
+            this.btnRegister.TabIndex = 9;
             this.btnRegister.Text = "Register";
             this.btnRegister.UseVisualStyleBackColor = true;
             this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
@@ -227,7 +227,7 @@
             this.btnSetUserPhoto.Location = new System.Drawing.Point(288, 226);
             this.btnSetUserPhoto.Name = "btnSetUserPhoto";
             this.btnSetUserPhoto.Size = new System.Drawing.Size(163, 23);
-            this.btnSetUserPhoto.TabIndex = 1;
+            this.btnSetUserPhoto.TabIndex = 8;
             this.btnSetUserPhoto.Text = "Browse";
             this.btnSetUserPhoto.UseVisualStyleBackColor = true;
             this.btnSetUserPhoto.Click += new System.EventHandler(this.btnSetUserPhoto_Click);
