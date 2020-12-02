@@ -30,7 +30,9 @@ namespace sales_and_inventory.View
 
         private void lblRegister_Click(object sender, EventArgs e)
         {
-            new View.Register().Show();
+            this.Hide();
+            new View.Register().ShowDialog();
+            this.Show();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)

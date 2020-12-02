@@ -45,6 +45,7 @@ namespace sales_and_inventory.View
             if (AuthController.Register(user))
             {
                 MessageBox.Show("Registration completed!.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
             } else
             {
                 MessageBox.Show("Registration failed!.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
