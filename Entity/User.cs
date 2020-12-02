@@ -7,7 +7,8 @@
        public string password { get; set; }
        public string name { get; set; }
        public string nic { get; set; }
-       public string email { get; set; }
+       public string mobile { get; set; }
+        public string email { get; set; }
        public byte[] photo { get; set; }
        public string registeredDate { get; set; }
     }
