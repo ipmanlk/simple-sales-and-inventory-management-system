@@ -108,7 +108,6 @@
             this.btnDelete.TabIndex = 13;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnSetPhoto
             // 
@@ -198,7 +197,6 @@
             this.label2.Size = new System.Drawing.Size(34, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "Price:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // txtPrice
             // 
@@ -206,7 +204,6 @@
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(224, 20);
             this.txtPrice.TabIndex = 2;
-            this.txtPrice.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // label1
             // 
@@ -247,9 +244,7 @@
             this.dgProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgProducts.Size = new System.Drawing.Size(396, 346);
             this.dgProducts.TabIndex = 1;
-            this.dgProducts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgProducts_CellContentClick);
             this.dgProducts.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgProducts_CellMouseClick);
-            this.dgProducts.SelectionChanged += new System.EventHandler(this.dgProducts_SelectionChanged);
             // 
             // groupBox3
             // 

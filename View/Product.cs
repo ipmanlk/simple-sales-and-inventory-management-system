@@ -28,37 +28,11 @@ namespace sales_and_inventory.View
 
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-
-
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             var dt = (DataTable)dgProducts.DataSource;
             dt.DefaultView.RowFilter = string.Format("Name like '%{0}%'", txtSearch.Text);
             dgProducts.Refresh();
-        }
-
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dgProducts_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void dgProducts_SelectionChanged(object sender, EventArgs e)
-        {
         }
 
         private void dgProducts_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -78,7 +52,7 @@ namespace sales_and_inventory.View
         private void btnSave_Click(object sender, EventArgs e)
         {
             var product = new Entity.Product();
-            
+
             // convert input photo to a byte array
             MemoryStream ms = new MemoryStream();
             imgProduct.Image.Save(ms, imgProduct.Image.RawFormat);
@@ -92,7 +66,12 @@ namespace sales_and_inventory.View
             product.addedDate = DateTime.Now.ToString("yyyy-MM-dd");
             product.addedUserId = 6;
 
-            ProductController.Save(product);
+            if (ProductController.Save(product))
+            {
+                DataTable dt = ProductController.GetAll();
+                dgProducts.DataSource = dt;
+                dgProducts.Refresh();
+            }
         }
 
         private void btnSetPhoto_Click(object sender, EventArgs e)
