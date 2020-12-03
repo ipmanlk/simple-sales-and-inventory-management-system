@@ -74,5 +74,35 @@ namespace sales_and_inventory.View
             txtDescription.Text = product.description;
             imgProduct.Image = Image.FromStream(new MemoryStream(product.photo));
         }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            var product = new Entity.Product();
+            
+            // convert input photo to a byte array
+            MemoryStream ms = new MemoryStream();
+            imgProduct.Image.Save(ms, imgProduct.Image.RawFormat);
+            byte[] photo = ms.ToArray();
+
+            product.name = txtName.Text.Trim();
+            product.photo = photo;
+            product.price = Decimal.Parse(txtPrice.Text.Trim());
+            product.salePrice = Decimal.Parse(txtSalePrice.Text.Trim());
+            product.qty = Int32.Parse(txtQty.Text.Trim());
+            product.addedDate = DateTime.Now.ToString("yyyy-MM-dd");
+            product.addedUserId = 6;
+
+            ProductController.Save(product);
+        }
+
+        private void btnSetPhoto_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog opn = new OpenFileDialog();
+            opn.Filter = "Choose Image(*.jpg; *.png; *.jpeg)|*.jpg; *.png; *.jpeg";
+            if (opn.ShowDialog() == DialogResult.OK)
+            {
+                imgProduct.Image = Image.FromFile(opn.FileName);
+            }
+        }
     }
 }

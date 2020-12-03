@@ -98,6 +98,7 @@
             this.btnSave.TabIndex = 14;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnDelete
             // 
@@ -117,14 +118,17 @@
             this.btnSetPhoto.TabIndex = 12;
             this.btnSetPhoto.Text = "Browse";
             this.btnSetPhoto.UseVisualStyleBackColor = true;
+            this.btnSetPhoto.Click += new System.EventHandler(this.btnSetPhoto_Click);
             // 
             // imgProduct
             // 
             this.imgProduct.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.imgProduct.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.imgProduct.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.imgProduct.Cursor = System.Windows.Forms.Cursors.Default;
             this.imgProduct.Location = new System.Drawing.Point(257, 52);
             this.imgProduct.Name = "imgProduct";
             this.imgProduct.Size = new System.Drawing.Size(106, 95);
+            this.imgProduct.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgProduct.TabIndex = 11;
             this.imgProduct.TabStop = false;
             // 

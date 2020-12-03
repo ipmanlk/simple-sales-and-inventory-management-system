@@ -14,68 +14,46 @@ namespace sales_and_inventory.Dao
     {
         public static void Save(User user)
         {
-            try
-            {
-                MySqlConnection connection = DatabaseUtil.GetConnection();
-                MySqlCommand cmd = connection.CreateCommand();
+            MySqlConnection connection = DatabaseUtil.GetConnection();
+            MySqlCommand cmd = connection.CreateCommand();
 
-                cmd.CommandText = "INSERT INTO user(username, password, name, nic, mobile, email, photo, registered_date) VALUES(@username, @password, @name, @nic, @mobile, @email, @photo, @registration_date)";
-                cmd.Parameters.AddWithValue("@username", user.username);
-                cmd.Parameters.AddWithValue("@password", user.password);
-                cmd.Parameters.AddWithValue("@name", user.name);
-                cmd.Parameters.AddWithValue("@nic", user.nic);
-                cmd.Parameters.AddWithValue("@mobile", user.mobile);
-                cmd.Parameters.AddWithValue("@email", user.email);
-                cmd.Parameters.AddWithValue("@photo", user.photo);
-                cmd.Parameters.AddWithValue("@registration_date", user.registeredDate);
-                cmd.ExecuteNonQuery();
+            cmd.CommandText = "INSERT INTO user(username, password, name, nic, mobile, email, photo, registered_date) VALUES(@username, @password, @name, @nic, @mobile, @email, @photo, @registration_date)";
+            cmd.Parameters.AddWithValue("@username", user.username);
+            cmd.Parameters.AddWithValue("@password", user.password);
+            cmd.Parameters.AddWithValue("@name", user.name);
+            cmd.Parameters.AddWithValue("@nic", user.nic);
+            cmd.Parameters.AddWithValue("@mobile", user.mobile);
+            cmd.Parameters.AddWithValue("@email", user.email);
+            cmd.Parameters.AddWithValue("@photo", user.photo);
+            cmd.Parameters.AddWithValue("@registration_date", user.registeredDate);
+            cmd.ExecuteNonQuery();
 
-                DatabaseUtil.CloseConnection();
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine(e.Message);
-                DatabaseUtil.CloseConnection();
-            }
+            DatabaseUtil.CloseConnection();
         }
 
         public static User GetOne(string username)
         {
-            try
-            {
-                MySqlConnection connection = DatabaseUtil.GetConnection();
-                MySqlCommand cmd = connection.CreateCommand();
-                cmd.CommandText = "SELECT * FROM user WHERE username = @username";
-                cmd.Parameters.AddWithValue("@username", username);
-                MySqlDataReader reader = cmd.ExecuteReader();
-                reader.Read();
+            MySqlConnection connection = DatabaseUtil.GetConnection();
+            MySqlCommand cmd = connection.CreateCommand();
+            cmd.CommandText = "SELECT * FROM user WHERE username = @username";
+            cmd.Parameters.AddWithValue("@username", username);
+            MySqlDataReader reader = cmd.ExecuteReader();
+            reader.Read();
 
-                User user = new User();
-                user.username = reader["username"].ToString();
-                user.password = reader["password"].ToString();
-                user.name = reader["name"].ToString();
-                user.nic = reader["nic"].ToString();
-                user.mobile = reader["mobile"].ToString();
-                user.email = reader["email"].ToString();
-                user.registeredDate = reader["registered_date"].ToString();
-                user.photo = (byte[])reader["photo"];
+            User user = new User();
+            user.username = reader["username"].ToString();
+            user.password = reader["password"].ToString();
+            user.name = reader["name"].ToString();
+            user.nic = reader["nic"].ToString();
+            user.mobile = reader["mobile"].ToString();
+            user.email = reader["email"].ToString();
+            user.registeredDate = reader["registered_date"].ToString();
+            user.photo = (byte[])reader["photo"];
 
-                reader.Close();
-                DatabaseUtil.CloseConnection();
+            reader.Close();
+            DatabaseUtil.CloseConnection();
 
-                return user;
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine(e.Message);
-                DatabaseUtil.CloseConnection();
-                return new User();
-            }
-        }
-
-        public static User GetOne(int id)
-        {
-            return new User();
+            return user;
         }
     }
 }

@@ -1,13 +1,8 @@
 ﻿using MySql.Data.MySqlClient;
 using sales_and_inventory.Util;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using sales_and_inventory.Entity;
-using System.Diagnostics;
 
 namespace sales_and_inventory.Dao
 {
@@ -15,59 +10,60 @@ namespace sales_and_inventory.Dao
     {
         public static DataTable GetAll()
         {
-            try
-            {
-                MySqlConnection connection = DatabaseUtil.GetConnection();
-                MySqlCommand cmd = connection.CreateCommand();
-                cmd.CommandText = "SELECT id AS ID, code AS Code, name as Name, price as Price, sale_price as 'Sale Price', qty as Qty FROM product";
-                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                DatabaseUtil.CloseConnection();
-                return dt;
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine(e.Message);
-                return new DataTable();
-            }
+            MySqlConnection connection = DatabaseUtil.GetConnection();
+            MySqlCommand cmd = connection.CreateCommand();
+            cmd.CommandText = "SELECT id AS ID, name as Name, price as Price, sale_price as 'Sale Price', qty as Qty FROM product";
+            MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            DatabaseUtil.CloseConnection();
+            return dt;
         }
 
         public static Product GetOne(int id)
         {
+            MySqlConnection connection = DatabaseUtil.GetConnection();
+            MySqlCommand cmd = connection.CreateCommand();
+            cmd.CommandText = "SELECT * FROM product WHERE id = @id";
+            cmd.Parameters.AddWithValue("@id", id);
+            MySqlDataReader reader = cmd.ExecuteReader();
+            reader.Read();
 
-            try
-            {
-                MySqlConnection connection = DatabaseUtil.GetConnection();
-                MySqlCommand cmd = connection.CreateCommand();
-                cmd.CommandText = "SELECT * FROM product WHERE id = @id";
-                cmd.Parameters.AddWithValue("@id", id);
-                MySqlDataReader reader = cmd.ExecuteReader();
-                reader.Read();
+            Product product = new Product();
+            product.id = Int32.Parse(reader["id"].ToString());
+            product.name = reader["name"].ToString();
+            product.photo = (byte[])reader["photo"];
+            product.price = Decimal.Parse(reader["price"].ToString());
+            product.salePrice = Decimal.Parse(reader["sale_price"].ToString());
+            product.qty = Int32.Parse(reader["qty"].ToString());
+            product.description = reader["description"].ToString();
+            product.addedDate = reader["added_date"].ToString();
+            product.addedUserId = Int32.Parse(reader["added_user_id"].ToString());
 
-                Product product = new Product();
-                product.id = Int32.Parse(reader["id"].ToString());
-                product.code = reader["code"].ToString();
-                product.name = reader["name"].ToString();
-                product.photo = (byte[])reader["photo"];
-                product.price = Decimal.Parse(reader["price"].ToString());
-                product.salePrice = Decimal.Parse(reader["sale_price"].ToString());
-                product.qty = Int32.Parse(reader["qty"].ToString());
-                product.description = reader["description"].ToString();
-                product.addedDate = reader["added_date"].ToString();
-                product.addedUserId = Int32.Parse(reader["added_user_id"].ToString());
+            reader.Close();
+            DatabaseUtil.CloseConnection();
 
-                reader.Close();
-                DatabaseUtil.CloseConnection();
+            return product;
+        }
 
-                return product;
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine(e.Message);
-                DatabaseUtil.CloseConnection();
-                return new Product();
-            }
+        public static void Save(Product product)
+        {
+            MySqlConnection connection = DatabaseUtil.GetConnection();
+            MySqlCommand cmd = connection.CreateCommand();
+
+            cmd.CommandText = "INSERT INTO product(name, photo, price, sale_price, qty, description, added_date, added_user_id) VALUES(@name, @photo, @price, @sale_price, @qty, @description, @added_date, @added_user_id)";
+            cmd.Parameters.AddWithValue("@name", product.name);
+            cmd.Parameters.AddWithValue("@photo", product.photo);
+            cmd.Parameters.AddWithValue("@price", product.price);
+            cmd.Parameters.AddWithValue("@sale_price", product.salePrice);
+            cmd.Parameters.AddWithValue("@qty", product.qty);
+            cmd.Parameters.AddWithValue("@description", product.description);
+            cmd.Parameters.AddWithValue("@added_date", product.addedDate);
+            cmd.Parameters.AddWithValue("@added_user_id", product.addedUserId);
+
+            cmd.ExecuteNonQuery();
+
+            DatabaseUtil.CloseConnection();
         }
     }
 }

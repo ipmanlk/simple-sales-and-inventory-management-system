@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using sales_and_inventory.Entity;
 using sales_and_inventory.Dao;
 using System.Diagnostics;
