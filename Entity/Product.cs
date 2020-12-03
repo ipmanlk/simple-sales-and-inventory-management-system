@@ -6,8 +6,6 @@
         public string code { get; set; }
         public string name { get; set; }
         public byte[] photo { get; set; }
-        public decimal weight { get; set; }
-        public string weightUnitType { get; set; }
         public decimal price { get; set; }
         public decimal salePrice { get; set; }
         public int qty { get; set; }
