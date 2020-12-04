@@ -65,5 +65,37 @@ namespace sales_and_inventory.Dao
 
             DatabaseUtil.CloseConnection();
         }
+
+        public static void Update(Product product)
+        {
+            MySqlConnection connection = DatabaseUtil.GetConnection();
+            MySqlCommand cmd = connection.CreateCommand();
+
+            cmd.CommandText = "UPDATE product SET name=@name, photo=@photo, price=@price, sale_price=@sale_price, qty=@qty, description=@description WHERE id=@id";
+            cmd.Parameters.AddWithValue("@id", product.id);
+            cmd.Parameters.AddWithValue("@name", product.name);
+            cmd.Parameters.AddWithValue("@photo", product.photo);
+            cmd.Parameters.AddWithValue("@price", product.price);
+            cmd.Parameters.AddWithValue("@sale_price", product.salePrice);
+            cmd.Parameters.AddWithValue("@qty", product.qty);
+            cmd.Parameters.AddWithValue("@description", product.description);
+
+            cmd.ExecuteNonQuery();
+
+            DatabaseUtil.CloseConnection();
+        }
+
+        public static void Delete(int id)
+        {
+            MySqlConnection connection = DatabaseUtil.GetConnection();
+            MySqlCommand cmd = connection.CreateCommand();
+
+            cmd.CommandText = "DELETE FROM product WHERE id = @id";
+            cmd.Parameters.AddWithValue("@id", id);
+
+            cmd.ExecuteNonQuery();
+
+            DatabaseUtil.CloseConnection();
+        }
     }
 }

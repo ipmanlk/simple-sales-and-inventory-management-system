@@ -118,7 +118,5 @@ namespace sales_and_inventory.View
 
             return errors;
         }
-
-   
     }
 }

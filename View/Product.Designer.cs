@@ -79,7 +79,7 @@
             this.groupBox1.Size = new System.Drawing.Size(386, 417);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Products Form";
+            this.groupBox1.Text = "Product Form";
             // 
             // btnUpdate
             // 
@@ -89,6 +89,7 @@
             this.btnUpdate.TabIndex = 15;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnSave
             // 
@@ -108,6 +109,7 @@
             this.btnDelete.TabIndex = 13;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnSetPhoto
             // 
@@ -273,6 +275,8 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.MaximumSize = new System.Drawing.Size(834, 483);
+            this.MinimumSize = new System.Drawing.Size(834, 483);
             this.Name = "Product";
             this.Text = "Product";
             this.Load += new System.EventHandler(this.Product_Load);

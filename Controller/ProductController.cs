@@ -46,5 +46,33 @@ namespace sales_and_inventory.Controller
                 return false;
             }
         }
+
+        public static Boolean Update(Product product)
+        {
+            try
+            {
+                ProductDao.Update(product);
+                return true;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.Message);
+                return false;
+            }
+        }
+
+        public static Boolean Delete(int id)
+        {
+            try
+            {
+                ProductDao.Delete(id);
+                return true;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.Message);
+                return false;
+            }
+        }
     }
 }
