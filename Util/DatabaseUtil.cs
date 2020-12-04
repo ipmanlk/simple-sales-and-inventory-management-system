@@ -31,8 +31,11 @@ namespace sales_and_inventory.Util
 
         public static void CloseConnection()
         {
-            connection.Close();
-            connection = null;
+            if (connection != null)
+            {
+                connection.Close();
+                connection = null;
+            }
         }
     }
 }

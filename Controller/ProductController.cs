@@ -8,7 +8,7 @@ namespace sales_and_inventory.Controller
 {
     class ProductController
     {
-        public static Product getOne(int id)
+        public static Product GetOne(int id)
         {
             try
             {

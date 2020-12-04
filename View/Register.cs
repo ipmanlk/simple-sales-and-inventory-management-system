@@ -32,7 +32,7 @@ namespace sales_and_inventory.View
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            string errors = validateInputs();
+            string errors = ValidateInputs();
 
             if (errors != "")
             {
@@ -40,7 +40,7 @@ namespace sales_and_inventory.View
                 return;
             }
 
-            User user = getInputs();
+            User user = GetInputs();
 
             if (AuthController.Register(user))
             {
@@ -52,7 +52,7 @@ namespace sales_and_inventory.View
             }
         }
 
-        private User getInputs()
+        private User GetInputs()
         {
             User user = new User();
             user.username = txtUsername.Text.Trim();
@@ -73,7 +73,7 @@ namespace sales_and_inventory.View
             return user;
         }
 
-        private string validateInputs()
+        private string ValidateInputs()
         {
             string errors = "";
             

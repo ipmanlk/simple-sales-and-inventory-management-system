@@ -32,7 +32,7 @@ namespace sales_and_inventory.View
             // grab id of selected product
             int selectedId = Int32.Parse(dgProducts.SelectedRows[0].Cells[0].Value.ToString());
             // get product and display details
-            var product = ProductController.getOne(selectedId);
+            var product = ProductController.GetOne(selectedId);
             txtName.Text = product.name;
             txtPrice.Text = product.price.ToString();
             txtSalePrice.Text = product.salePrice.ToString();
@@ -43,7 +43,7 @@ namespace sales_and_inventory.View
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            string errors = validateInputs();
+            string errors = ValidateInputs();
 
             if (errors != "")
             {
@@ -51,7 +51,7 @@ namespace sales_and_inventory.View
                 return;
             }
 
-            var product = getInputs();
+            var product = GetInputs();
 
             if (ProductController.Save(product))
             {
@@ -108,7 +108,7 @@ namespace sales_and_inventory.View
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            string errors = validateInputs();
+            string errors = ValidateInputs();
 
             if (errors != "")
             {
@@ -118,7 +118,7 @@ namespace sales_and_inventory.View
 
             int selectedId = Int32.Parse(dgProducts.SelectedRows[0].Cells[0].Value.ToString());
 
-            var product = getInputs();
+            var product = GetInputs();
             product.id = selectedId;
 
             if (ProductController.Update(product))
@@ -133,7 +133,7 @@ namespace sales_and_inventory.View
             }
         }
 
-        private Entity.Product getInputs()
+        private Entity.Product GetInputs()
         {
             var product = new Entity.Product();
 
@@ -153,7 +153,7 @@ namespace sales_and_inventory.View
             return product;
         }
 
-        private string validateInputs()
+        private string ValidateInputs()
         {
             string errors = "";
 

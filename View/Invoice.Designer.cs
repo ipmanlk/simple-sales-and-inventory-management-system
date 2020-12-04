@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtSalePrice = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtQty = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.btnCreate = new System.Windows.Forms.Button();
             this.txtLineTotal = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -46,19 +50,18 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.listProducts = new System.Windows.Forms.ListView();
             this.name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.salePrice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.qty = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.total = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.txtQty = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.salePrice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.txtSalePrice = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnRemoveFromList = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnRemoveFromList);
             this.groupBox1.Controls.Add(this.txtSalePrice);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.txtQty);
@@ -80,19 +83,54 @@
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(522, 433);
+            this.groupBox1.Size = new System.Drawing.Size(522, 451);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Invoice";
             // 
+            // txtSalePrice
+            // 
+            this.txtSalePrice.Location = new System.Drawing.Point(319, 44);
+            this.txtSalePrice.Name = "txtSalePrice";
+            this.txtSalePrice.ReadOnly = true;
+            this.txtSalePrice.Size = new System.Drawing.Size(85, 20);
+            this.txtSalePrice.TabIndex = 19;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(316, 25);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(58, 13);
+            this.label8.TabIndex = 18;
+            this.label8.Text = "Sale Price:";
+            // 
+            // txtQty
+            // 
+            this.txtQty.Location = new System.Drawing.Point(13, 93);
+            this.txtQty.Name = "txtQty";
+            this.txtQty.Size = new System.Drawing.Size(229, 20);
+            this.txtQty.TabIndex = 17;
+            this.txtQty.TextChanged += new System.EventHandler(this.txtQty_TextChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(10, 77);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(26, 13);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "Qty:";
+            // 
             // btnCreate
             // 
-            this.btnCreate.Location = new System.Drawing.Point(392, 375);
+            this.btnCreate.Location = new System.Drawing.Point(392, 399);
             this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(118, 45);
+            this.btnCreate.Size = new System.Drawing.Size(118, 39);
             this.btnCreate.TabIndex = 15;
             this.btnCreate.Text = "Create Invoice";
             this.btnCreate.UseVisualStyleBackColor = true;
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // txtLineTotal
             // 
@@ -113,7 +151,7 @@
             // 
             // txtNetTotal
             // 
-            this.txtNetTotal.Location = new System.Drawing.Point(353, 334);
+            this.txtNetTotal.Location = new System.Drawing.Point(353, 365);
             this.txtNetTotal.Name = "txtNetTotal";
             this.txtNetTotal.ReadOnly = true;
             this.txtNetTotal.Size = new System.Drawing.Size(157, 20);
@@ -122,7 +160,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(350, 315);
+            this.label5.Location = new System.Drawing.Point(350, 346);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(54, 13);
             this.label5.TabIndex = 11;
@@ -130,7 +168,7 @@
             // 
             // txtDiscountRatio
             // 
-            this.txtDiscountRatio.Location = new System.Drawing.Point(183, 334);
+            this.txtDiscountRatio.Location = new System.Drawing.Point(183, 365);
             this.txtDiscountRatio.Name = "txtDiscountRatio";
             this.txtDiscountRatio.Size = new System.Drawing.Size(156, 20);
             this.txtDiscountRatio.TabIndex = 10;
@@ -139,7 +177,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(180, 315);
+            this.label4.Location = new System.Drawing.Point(180, 346);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(97, 13);
             this.label4.TabIndex = 9;
@@ -147,7 +185,7 @@
             // 
             // txtGrandTotal
             // 
-            this.txtGrandTotal.Location = new System.Drawing.Point(13, 334);
+            this.txtGrandTotal.Location = new System.Drawing.Point(13, 365);
             this.txtGrandTotal.Name = "txtGrandTotal";
             this.txtGrandTotal.ReadOnly = true;
             this.txtGrandTotal.Size = new System.Drawing.Size(156, 20);
@@ -156,7 +194,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(10, 315);
+            this.label3.Location = new System.Drawing.Point(10, 346);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(66, 13);
             this.label3.TabIndex = 7;
@@ -210,9 +248,9 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.listProducts);
-            this.groupBox2.Location = new System.Drawing.Point(10, 164);
+            this.groupBox2.Location = new System.Drawing.Point(10, 162);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(500, 139);
+            this.groupBox2.Size = new System.Drawing.Size(500, 137);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Products";
@@ -220,6 +258,7 @@
             // listProducts
             // 
             this.listProducts.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.id,
             this.name,
             this.salePrice,
             this.qty,
@@ -230,7 +269,7 @@
             this.listProducts.Location = new System.Drawing.Point(3, 16);
             this.listProducts.MultiSelect = false;
             this.listProducts.Name = "listProducts";
-            this.listProducts.Size = new System.Drawing.Size(494, 120);
+            this.listProducts.Size = new System.Drawing.Size(494, 118);
             this.listProducts.TabIndex = 0;
             this.listProducts.UseCompatibleStateImageBehavior = false;
             this.listProducts.View = System.Windows.Forms.View.Details;
@@ -238,7 +277,12 @@
             // name
             // 
             this.name.Text = "Name";
-            this.name.Width = 220;
+            this.name.Width = 180;
+            // 
+            // salePrice
+            // 
+            this.salePrice.Text = "Sale Price";
+            this.salePrice.Width = 100;
             // 
             // qty
             // 
@@ -250,50 +294,26 @@
             this.total.Text = "Line Total";
             this.total.Width = 120;
             // 
-            // txtQty
+            // id
             // 
-            this.txtQty.Location = new System.Drawing.Point(13, 93);
-            this.txtQty.Name = "txtQty";
-            this.txtQty.Size = new System.Drawing.Size(229, 20);
-            this.txtQty.TabIndex = 17;
-            this.txtQty.TextChanged += new System.EventHandler(this.txtQty_TextChanged);
+            this.id.Text = "ID";
+            this.id.Width = 30;
             // 
-            // label7
+            // btnRemoveFromList
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(10, 77);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(26, 13);
-            this.label7.TabIndex = 16;
-            this.label7.Text = "Qty:";
-            // 
-            // salePrice
-            // 
-            this.salePrice.Text = "Sale Price";
-            this.salePrice.Width = 100;
-            // 
-            // txtSalePrice
-            // 
-            this.txtSalePrice.Location = new System.Drawing.Point(319, 44);
-            this.txtSalePrice.Name = "txtSalePrice";
-            this.txtSalePrice.ReadOnly = true;
-            this.txtSalePrice.Size = new System.Drawing.Size(85, 20);
-            this.txtSalePrice.TabIndex = 19;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(316, 25);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(58, 13);
-            this.label8.TabIndex = 18;
-            this.label8.Text = "Sale Price:";
+            this.btnRemoveFromList.Location = new System.Drawing.Point(374, 307);
+            this.btnRemoveFromList.Name = "btnRemoveFromList";
+            this.btnRemoveFromList.Size = new System.Drawing.Size(136, 23);
+            this.btnRemoveFromList.TabIndex = 20;
+            this.btnRemoveFromList.Text = "Remove From List";
+            this.btnRemoveFromList.UseVisualStyleBackColor = true;
+            this.btnRemoveFromList.Click += new System.EventHandler(this.btnRemoveFromList_Click);
             // 
             // Invoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(544, 457);
+            this.ClientSize = new System.Drawing.Size(544, 475);
             this.Controls.Add(this.groupBox1);
             this.Name = "Invoice";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -333,5 +353,7 @@
         private System.Windows.Forms.ColumnHeader salePrice;
         private System.Windows.Forms.TextBox txtSalePrice;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ColumnHeader id;
+        private System.Windows.Forms.Button btnRemoveFromList;
     }
 }
