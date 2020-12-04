@@ -89,8 +89,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\AuthController.cs" />
+    <Compile Include="Controller\InvoiceController.cs" />
     <Compile Include="Controller\ProductController.cs" />
     <Compile Include="Controller\UserController.cs" />
+    <Compile Include="Dao\InvoiceDao.cs" />
     <Compile Include="Dao\ProductDao.cs" />
     <Compile Include="Dao\UserDao.cs" />
     <Compile Include="Entity\Invoice.cs" />

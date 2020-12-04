@@ -1,4 +1,6 @@
-﻿namespace sales_and_inventory.Entity
+﻿using System.Collections.Generic;
+
+namespace sales_and_inventory.Entity
 {
     class Invoice
     {
@@ -8,6 +10,6 @@
         public decimal netTotal { get; set; }
         public string addedDate { get; set; }
         public int addedUserId { get; set; }
-
+        public List<Product> products { get; set; }
     }
 }
