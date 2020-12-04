@@ -207,7 +207,5 @@ namespace sales_and_inventory.View
             txtDescription.Text = "";
             imgProduct.Image = null;
         }
-
-  
     }
 }

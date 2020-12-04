@@ -79,7 +79,7 @@
             this.groupBox1.Size = new System.Drawing.Size(386, 417);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Product Form";
+            this.groupBox1.Text = "Products Form";
             // 
             // btnUpdate
             // 

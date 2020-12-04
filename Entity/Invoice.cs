@@ -3,7 +3,6 @@
     class Invoice
     {
         public int id { get; set; }
-        public string code { get; set; }
         public decimal grandTotal { get; set; }
         public decimal discountRatio { get; set; }
         public decimal netTotal { get; set; }
