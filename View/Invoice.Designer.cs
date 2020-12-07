@@ -320,7 +320,7 @@
             this.MinimumSize = new System.Drawing.Size(560, 514);
             this.Name = "Invoice";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Invoice";
+            this.Text = "Sales and Inventory Management System : Invoice";
             this.Load += new System.EventHandler(this.Invoice_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

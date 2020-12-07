@@ -46,7 +46,9 @@ namespace sales_and_inventory.View
 
         private void menuSalesReport_Click(object sender, EventArgs e)
         {
-
+            Form salesReport = new SalesReport();
+            salesReport.MdiParent = this;
+            salesReport.Show();
         }
 
         private void menuCreateInvoice_Click(object sender, EventArgs e)

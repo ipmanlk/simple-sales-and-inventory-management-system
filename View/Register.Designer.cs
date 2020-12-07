@@ -240,7 +240,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "Register";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Register";
+            this.Text = "Sales and Inventory Management System : Register";
             this.Load += new System.EventHandler(this.Register_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
