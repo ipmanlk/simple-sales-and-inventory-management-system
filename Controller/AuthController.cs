@@ -10,6 +10,8 @@ namespace sales_and_inventory.Controller
 
     class AuthController
     {
+        public static Form loginForm { get; set; }
+        public static Form dashboardForm { get; set; }
         public static User currentUser { get; private set; }
 
         public static Boolean LogIn(string username, string password)
@@ -47,6 +49,12 @@ namespace sales_and_inventory.Controller
                 MessageBox.Show("Login failed!.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+        }
+
+        public static Boolean logOut()
+        {
+            currentUser = null;
+            return true;
         }
 
         public static Boolean Register(User user)

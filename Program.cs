@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using sales_and_inventory.Controller;
 
 namespace sales_and_inventory
 {
@@ -16,7 +17,9 @@ namespace sales_and_inventory
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new View.Invoice());
+            Form loginForm = new View.Login();
+            AuthController.loginForm = loginForm;
+            Application.Run(loginForm);
         }
     }
 }

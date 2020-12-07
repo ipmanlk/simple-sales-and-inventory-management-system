@@ -33,7 +33,10 @@ namespace sales_and_inventory.View
         {
             if (AuthController.LogIn(txtUsername.Text.Trim(), txtPassword.Text))
             {
-                new View.Register().Show();
+                this.Hide();
+                Form dashboardForm = new View.Dashboard();
+                AuthController.dashboardForm = dashboardForm;
+                dashboardForm.Show();
             }
         }
     }
