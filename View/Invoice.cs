@@ -16,6 +16,7 @@ namespace sales_and_inventory.View
 
         private void Invoice_Load(object sender, EventArgs e)
         {
+            this.MaximizeBox = false;
             // load products to combo box
             RefreshProducts();
         }

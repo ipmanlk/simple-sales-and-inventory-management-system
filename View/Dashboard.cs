@@ -21,11 +21,12 @@ namespace sales_and_inventory.View
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
+            this.IsMdiContainer = true;
+
             // set user avatar and info
             User loggedUser = AuthController.currentUser;
-            imgUser.Image = Image.FromStream(new MemoryStream(loggedUser.photo));
-            label1.Text = loggedUser.email;
-            label2.Text = loggedUser.username;
+            statusUserInfo.Image = Image.FromStream(new MemoryStream(loggedUser.photo));
+            statusUserInfo.Text = String.Format("{0} ({1})", loggedUser.username, loggedUser.email);
         }
 
         private void menuLogOut_Click(object sender, EventArgs e)
@@ -42,10 +43,24 @@ namespace sales_and_inventory.View
             AuthController.loginForm.Close();
         }
 
-        private void btnCreateInvoice_Click(object sender, EventArgs e)
+
+        private void menuSalesReport_Click(object sender, EventArgs e)
         {
-            Form invoiceForm = new Invoice();
-            invoiceForm.Show();
+
+        }
+
+        private void menuCreateInvoice_Click(object sender, EventArgs e)
+        {
+            Form invoice = new Invoice();
+            invoice.MdiParent = this;
+            invoice.Show();
+        }
+
+        private void menuProducts_Click(object sender, EventArgs e)
+        {
+            Form product = new Product();
+            product.MdiParent = this;
+            product.Show();
         }
     }
 }

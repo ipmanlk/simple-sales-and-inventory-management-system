@@ -17,6 +17,8 @@ namespace sales_and_inventory.View
 
         private void Product_Load(object sender, EventArgs e)
         {
+            this.MaximizeBox = false;
+
             RefreshProductsList();
         }
 
@@ -207,5 +209,6 @@ namespace sales_and_inventory.View
             txtDescription.Text = "";
             imgProduct.Image = null;
         }
+
     }
 }

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnRemoveFromList = new System.Windows.Forms.Button();
             this.txtSalePrice = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtQty = new System.Windows.Forms.TextBox();
@@ -49,12 +50,11 @@
             this.cmbProducts = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.listProducts = new System.Windows.Forms.ListView();
+            this.id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.salePrice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.qty = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.total = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnRemoveFromList = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -87,6 +87,16 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Invoice";
+            // 
+            // btnRemoveFromList
+            // 
+            this.btnRemoveFromList.Location = new System.Drawing.Point(374, 307);
+            this.btnRemoveFromList.Name = "btnRemoveFromList";
+            this.btnRemoveFromList.Size = new System.Drawing.Size(136, 23);
+            this.btnRemoveFromList.TabIndex = 20;
+            this.btnRemoveFromList.Text = "Remove From List";
+            this.btnRemoveFromList.UseVisualStyleBackColor = true;
+            this.btnRemoveFromList.Click += new System.EventHandler(this.btnRemoveFromList_Click);
             // 
             // txtSalePrice
             // 
@@ -274,6 +284,11 @@
             this.listProducts.UseCompatibleStateImageBehavior = false;
             this.listProducts.View = System.Windows.Forms.View.Details;
             // 
+            // id
+            // 
+            this.id.Text = "ID";
+            this.id.Width = 30;
+            // 
             // name
             // 
             this.name.Text = "Name";
@@ -294,27 +309,15 @@
             this.total.Text = "Line Total";
             this.total.Width = 120;
             // 
-            // id
-            // 
-            this.id.Text = "ID";
-            this.id.Width = 30;
-            // 
-            // btnRemoveFromList
-            // 
-            this.btnRemoveFromList.Location = new System.Drawing.Point(374, 307);
-            this.btnRemoveFromList.Name = "btnRemoveFromList";
-            this.btnRemoveFromList.Size = new System.Drawing.Size(136, 23);
-            this.btnRemoveFromList.TabIndex = 20;
-            this.btnRemoveFromList.Text = "Remove From List";
-            this.btnRemoveFromList.UseVisualStyleBackColor = true;
-            this.btnRemoveFromList.Click += new System.EventHandler(this.btnRemoveFromList_Click);
-            // 
             // Invoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(544, 475);
             this.Controls.Add(this.groupBox1);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(560, 514);
+            this.MinimumSize = new System.Drawing.Size(560, 514);
             this.Name = "Invoice";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Invoice";
